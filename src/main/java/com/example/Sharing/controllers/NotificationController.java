@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -41,14 +42,14 @@ public class NotificationController {
     }
 
     @PostMapping("/profile/notifications/edit")
-    public String edit(@Valid @ModelAttribute("object") Notification object, BindingResult br){
-        if (br.hasErrors()){
+    public String edit(@Valid @ModelAttribute("object") Notification object, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
             return "notifications/edit";
         }
         try {
             service.save(object);
         }catch (Exception e){
-            br.rejectValue("name", "error.name", e.getMessage());
+            bindingResult.rejectValue("name", "error.name", e.getMessage());
             return "notifications/edit";
         }
         return "redirect:/profile/notifications";

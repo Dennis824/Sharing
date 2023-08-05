@@ -20,12 +20,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @Controller
-public class LoginController {
+public class LogicController {
 
     private UserService userService;
     private OrderService orderService;
 
-    public LoginController(UserService userService, OrderService orderService) {
+    public LogicController(UserService userService, OrderService orderService) {
         this.userService = userService;
         this.orderService = orderService;
     }
@@ -97,8 +97,8 @@ public class LoginController {
     }
 
     @PostMapping("profile/edit")
-    public String edit(@Valid @ModelAttribute("user") User user, BindingResult br) {
-        if (br.hasErrors()) {
+    public String edit(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return "users/edit";
         }
         try {

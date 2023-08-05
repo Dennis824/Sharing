@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8" />
+    <title>Types</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<nav class="menu">
+    <ul>
+        <li><a href="/profile">My profile</a></li>
+        <li sec:authorize="anonymous"><a href="/login">Login</a></li>
+        <li sec:authorize="authenticated"><a href="/logout">Logout</a></li>
+        <li sec:authorize="anonymous"><a sec:authorize="anonymous" href="/registration">Registration</a></li>
+    </ul>
+</nav>
+<div class="logo">
+    <p><a href="/"><img src="images/logo.png" title="Car Sharing"></a></p>
+</div>
+<h1>Types</h1>
+<a href="/admin/types/new">Add </a>
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+        <tr th:each ="object : ${list}">
+            <td th:utext="${object.id}">...</td>
+            <td th:utext="${object.name}">...</td>
+            <td><a th:href="@{/admin/types/edit/{id}(id=${object.id})}">Edit</a></td>
+            <td><a th:href="@{/admin/types/delete/{id}(id=${object.id})}">Delete</a></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

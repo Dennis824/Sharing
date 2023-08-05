@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8" />
+    <title>Car Sharing</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<nav class="menu">
+    <ul>
+        <li><a href="/profile">Мой профиль</a></li>
+        <li sec:authorize="anonymous"><a href="/login">Войти</a></li>
+        <li sec:authorize="authenticated"><a href="/logout">Выйти</a></li>
+        <li sec:authorize="anonymous"><a sec:authorize="anonymous" href="/registration">Регистрация</a></li>
+    </ul>
+</nav>
+<div class="logo">
+    <p><a href="/"><img src="/images/logo.png" title="Car Sharing"></a></p>
+</div>
+
+
+
+<div>
+    <a sec:authorize="hasAuthority('ADMIN')" href="/admin/types">Types</a></br>
+    <a sec:authorize="hasAuthority('ADMIN')" href="/admin/transmissions">Transmission</a></br>
+    <a sec:authorize="hasAuthority('ADMIN')" href="/admin/firms">Firms</a></br>
+    <a href="/cars">Cars </a></br>
+    <a sec:authorize="hasAuthority('USER')" href="/profile/notifications">Notifications </a></br>
+    <a sec:authorize="hasAuthority('ADMIN')" href="/admin/tax">Tax </a></br>
+    <a sec:authorize="hasAuthority('ADMIN')" href="/admin/users">Clients </a></br>
+    <a sec:authorize="hasAuthority('ADMIN')" href="/admin/orders">Orders </a></br>
+</div>
+</body>
+</html>

@@ -16,20 +16,20 @@ public class TaxService {
     }
 
     public Iterable<Tax> findAll() {
-        return TaxRepository.findAll();
+        return taxRepository.findAll();
     }
 
     public Tax findById(long id) {
-        return TaxRepository.findById(id);
+        return taxRepository.findById(id);
     }
 
     @Transactional
     public void delete(Tax tax) {
-        TaxRepository.delete(tax);
+        taxRepository.delete(tax);
     }
 
     @Transactional
     public void save(Tax tax) throws Exception{
-        TaxRepository.save(tax);
+        taxRepository.save(tax);
     }
 }

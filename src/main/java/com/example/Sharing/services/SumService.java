@@ -17,20 +17,20 @@ public class SumService{
 
 
     public Iterable<Sum> findAll() {
-        return SumRepository.findAll();
+        return sumRepository.findAll();
     }
 
     public Sum findById(int id) {
-        return SumRepository.findById(id);
+        return sumRepository.findById(id);
     }
 
     @Transactional
     public void delete(Sum sum) {
-        SumRepository.delete(sum);
+        sumRepository.delete(sum);
     }
 
     @Transactional
     public void save(Sum sum) throws Exception {
-        SumRepository.save(sum);
+        sumRepository.save(sum);
     }
 }

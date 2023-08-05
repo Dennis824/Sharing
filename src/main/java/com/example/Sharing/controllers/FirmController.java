@@ -34,14 +34,14 @@ public class FirmController {
 
 
     @PostMapping("add")
-    public String addType(@Valid @ModelAttribute("object") Firm object, BindingResult br) {
-        if (br.hasErrors()) {
+    public String addType(@Valid @ModelAttribute("object") Firm object, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return "firms/new";
         }
         try {
             firmService.save(object);
         } catch (Exception e) {
-            br.rejectValue("name", "error.name", e.getMessage());
+            bindingResult.rejectValue("name", "error.name", e.getMessage());
             return "firms/new";
         }
         return "redirect:/admin/firms";
@@ -54,14 +54,14 @@ public class FirmController {
     }
 
     @PostMapping("/edit")
-    public String edit(@Valid @ModelAttribute("object") Firm object, BindingResult br) {
-        if (br.hasErrors()) {
+    public String edit(@Valid @ModelAttribute("object") Firm object, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return "firms/edit";
         }
         try {
             firmService.save(object);
         } catch (Exception e) {
-            br.rejectValue("name", "error.name", e.getMessage());
+            bindingResult.rejectValue("name", "error.name", e.getMessage());
             return "firms/edit";
         }
         return "redirect:/admin/firms";

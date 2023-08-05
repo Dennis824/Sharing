@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head lang="en">
+    <title>Remove </title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<nav class="menu">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/profile">My profile</a></li>
+        <li sec:authorize="anonymous"><a href="/login">Login</a></li>
+        <li sec:authorize="authenticated"><a href="/logout">Logout</a></li>
+        <li sec:authorize="anonymous"><a sec:authorize="anonymous" href="/registration">Registration</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <h2>Delete transmission</h2>
+    <div>
+        <form class="form-horizontal" th:object="${object}" th:action="@{/admin/transmissions/delete}" th:method="delete">
+            <input type="hidden" class="form-control" th:field="*{id}"/>
+            <table>
+                <tr>
+                    <td>Deleting type:</td>
+                    <td><p th:utext="*{name}"></p></td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Confirm</button></td>
+                </tr>
+            </table>
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

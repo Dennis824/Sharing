@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head lang="en">
+    <title>Your profile</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<nav class="menu">
+    <ul>
+        <li><a href="/profile">My profile</a></li>
+        <li sec:authorize="anonymous"><a href="/login">Login</a></li>
+        <li sec:authorize="authenticated"><a href="/logout">Logout</a></li>
+        <li sec:authorize="anonymous"><a sec:authorize="anonymous" href="/registration">Registration</a></li>
+    </ul>
+</nav>
+<div class="logo">
+    <p><a href="/"><img src="/images/logo.png" title="Car Sharing"></a></p>
+</div>
+<div>
+    <h2>Your profile</h2>
+    <div th:object="${user}">
+        <table >
+            <tr>
+                <td class="right">Name:</td>
+                <td><p th:text="*{name}"></p></td>
+            </tr>
+
+            <tr>
+                <td>Email:</td>
+                <td><p th:text="*{email}"></p></td>
+            </tr>
+            <tr>
+                <td>Role:</td>
+                <td><p th:text="*{roles}"></p></td>
+            </tr>
+        </table>
+        <form sec:authorize="hasAuthority('USER')" action="/profile/orders">
+            <input type="submit" value="Orders" />
+        </form>
+        <a th:href="@{/profile/edit/{id}(id=*{id})}">Edit</a>
+    </div>
+</div>
+</body>
+</html>

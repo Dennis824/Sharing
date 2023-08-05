@@ -5,6 +5,7 @@ import com.example.Sharing.services.TransmissionService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -34,8 +35,8 @@ public class TransmissionController {
 
 
     @PostMapping("add")
-    public String addType(@Valid @ModelAttribute("object") Transmission object, BindingResult br, Model model) {
-        if (br.hasErrors()) {
+    public String addType(@Valid @ModelAttribute("object") Transmission object, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
             return "transmissions/new";
         }
         try {
@@ -44,7 +45,7 @@ public class TransmissionController {
             object.setName(cap);
             service.save(object);
         } catch (Exception e) {
-            br.rejectValue("name", "error.object", e.getMessage());
+            bindingResult.rejectValue("name", "error.object", e.getMessage());
             return "transmissions/new";
         }
         model.addAttribute("success","Тип '"+object.getName()+"' успешно добавлен");
@@ -58,14 +59,14 @@ public class TransmissionController {
     }
 
     @PostMapping("/edit")
-    public String edit(@Valid @ModelAttribute("object") Transmission object, BindingResult br) {
-        if (br.hasErrors()) {
+    public String edit(@Valid @ModelAttribute("object") Transmission object, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return "transmissions/edit";
         }
         try {
             service.save(object);
         } catch (Exception e) {
-            br.rejectValue("name", "error.name", e.getMessage());
+            bindingResult.rejectValue("name", "error.name", e.getMessage());
             return "transmissions/edit";
         }
         return "redirect:/admin/transmissions";

@@ -32,7 +32,7 @@ public class CarService {
 
     @Transactional
     public void save(Car car) throws Exception{
-        if (carRepository.findByNumber(car.getNumber())==null||carRepository.findByNumber(car.getNumber()).getId()==car.getId()) {
+        if (carRepository.findByNumber(car.getNumber())==null|| carRepository.findByNumber(car.getNumber()).getId()== car.getId()) {
             carRepository.save(car);
             return;
         }

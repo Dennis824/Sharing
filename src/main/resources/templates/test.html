@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>New order</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+    <script type="text/javascript" src="/js/rentCar.js">
+    </script>
+</head>
+<body>
+<div class="container">
+    <div>
+        <form class="form-horizontal" th:object="${object}" th:action="@{/test/add}" method="post">
+            <input type="hidden" th:value="77" th:attr="name='i'" />
+            <input th:type="date" th:value="01-01-2020" th:field="*{date}"/>
+            <td><button type="submit"  >Confirm</button></td>
+
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

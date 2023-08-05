@@ -8,6 +8,7 @@ import com.example.Sharing.services.TypeService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -45,8 +46,8 @@ public class CarController {
     }
 
     @PostMapping("add")
-    public String addType(@Valid @ModelAttribute("object") Car object, BindingResult br, Model model) {
-        if (br.hasErrors()) {
+    public String addType(@Valid @ModelAttribute("object") Car object, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
             return "cars/new";
         }
         try {
@@ -56,7 +57,7 @@ public class CarController {
             model.addAttribute("firms", firmService.findAll());
             model.addAttribute("types", typeService.findAll());
             model.addAttribute("transmissions", transmissionService.findAll());
-            br.rejectValue("number", "error.object", e.getMessage());
+            bindingResult.rejectValue("number", "error.object", e.getMessage());
             return "cars/new";
         }
 
@@ -73,8 +74,8 @@ public class CarController {
     }
 
     @PostMapping("/edit")
-    public String edit(@Valid @ModelAttribute("object") Car object, BindingResult br,Model model) {
-        if (br.hasErrors()) {
+    public String edit(@Valid @ModelAttribute("object") Car object, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
             return "cars/edit";
         }
         try {
@@ -84,7 +85,7 @@ public class CarController {
             model.addAttribute("firms", firmService.findAll());
             model.addAttribute("types", typeService.findAll());
             model.addAttribute("transmissions", transmissionService.findAll());
-            br.rejectValue("number", "error.object", e.getMessage());
+            bindingResult.rejectValue("number", "error.object", e.getMessage());
             return "cars/edit";
         }
         return "redirect:/cars";

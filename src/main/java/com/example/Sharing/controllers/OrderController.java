@@ -106,8 +106,8 @@ public class OrderController {
     }
 
     @PostMapping("orders/edit")
-    public String edit(@Valid @ModelAttribute("object") Order order, BindingResult br, Model model) {
-        if (br.hasErrors()) {
+    public String edit(@Valid @ModelAttribute("object") Order order, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
             return "orders/edit";
         }
         try {
