@@ -31,7 +31,6 @@ public class User implements UserDetails {
     @Column(name = "password")
     private String password;
 
-    @Pattern(regexp = "^(\\+7|8)\\d{10}$", message = "Формат +7XXXXXXXXXX либо 8XXXXXXXXXX")
     @Column(name = "phone")
     private String phone;
 

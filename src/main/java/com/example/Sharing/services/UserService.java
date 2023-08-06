@@ -54,7 +54,7 @@ public class UserService {
     @Transactional
     public void create(User user) throws Exception{
         if (emailExist(user.getEmail()))
-            throw new Exception("Данный почтовый адрес занят");
+            throw new Exception("Email already used");
         user.setActive(1);
 
         Role userRole = roleRepository.findByRole("USER");

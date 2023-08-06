@@ -27,8 +27,8 @@
         <tr th:each ="object : ${list}">
             <td th:utext="${object.id}">...</td>
             <td th:utext="${object.name}">...</td>
-            <td><a th:href="@{/admin/firms/edit/{id}(id=${object.id})}">Изменить</a></td>
-            <td><a th:href="@{/admin/firms/delete/{id}(id=${object.id})}">Удалить</a></td>
+            <td><a th:href="@{/admin/firms/edit/{id}(id=${object.id})}">Edit</a></td>
+            <td><a th:href="@{/admin/firms/delete/{id}(id=${object.id})}">Delete</a></td>
         </tr>
     </table>
 </div>

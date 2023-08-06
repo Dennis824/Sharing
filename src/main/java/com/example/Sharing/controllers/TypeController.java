@@ -44,7 +44,7 @@ public class TypeController {
             bindingResult.rejectValue("name", "error.name", e.getMessage());
             return "types/new";
         }
-        model.addAttribute("success","Тип '"+object.getName()+"' успешно добавлен");
+        model.addAttribute("success","Тип '"+object.getName()+"' added successfully");
         return "types/new";
     }
 

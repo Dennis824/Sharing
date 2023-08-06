@@ -40,7 +40,7 @@ public class TransmissionController {
             return "transmissions/new";
         }
         try {
-            String str = object.getName();  //делаем первую букву заглавной
+            String str = object.getName();
             String cap = str.substring(0, 1).toUpperCase() + str.substring(1);
             object.setName(cap);
             service.save(object);

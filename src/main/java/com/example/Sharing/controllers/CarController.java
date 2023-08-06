@@ -104,7 +104,7 @@ public class CarController {
             carService.delete(object);
         } catch (Exception e) {
             model.addAttribute("object", carService.findById(object.getId()));
-            model.addAttribute("error","На данный автомобиль есть заказ. Альтернативы нет");
+            model.addAttribute("error","This car already in order. There is no other cars");
             return "/cars/delete";
         }
 

@@ -79,7 +79,7 @@ public class OrderController {
             e.printStackTrace();
             model.addAttribute("object", new Order());
             model.addAttribute("car", carService.findById(object.getCar().getId()));
-            model.addAttribute("error","Нет свободных авто на выбранный период");
+            model.addAttribute("error","There is no free cars in this period");
             return "/orders/new";
         }
         return "redirect:/cars";
