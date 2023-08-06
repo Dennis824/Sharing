@@ -12,10 +12,10 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     Iterable<Order> findAllByUser(User user);
 
     @Query(
-            value = "SELECT o.sum FROM Order o where o.id=?1",
-            nativeQuery = false)
+            value = "SELECT o.sum FROM Order o where o.id=?1")
     Integer getSum(long id);
 
-    //***
+    @Query(
+            value = "select o from Order o where o.id=?1")
     long getId();
 }
