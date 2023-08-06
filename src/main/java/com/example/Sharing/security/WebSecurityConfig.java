@@ -19,10 +19,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final DataSource dataSource;
 
-    @Value("${spring.queries.users-query}")
+    @Value("select email, password, active from users where email=?")
     private String usersQuery;
 
-    @Value("${spring.queries.roles-query}")
+    @Value("select u.email, r.role from users u inner join user_role ur on(u.id=ur.user_id) inner join roles r on(ur.role_id=r.id) where u.email=?")
     private String rolesQuery;
 
     private final UserDetailsService userDetailsService;

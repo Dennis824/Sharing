@@ -29,17 +29,17 @@
                     <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
                 </tr>
                 <tr>
-                    <td>Телефон:</td>
+                    <td>Phone:</td>
                     <td><input type="text" th:field="*{phone}" /></td>
                     <td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">phone Error</td>
                 </tr>
                 <tr>
-                    <td>Почта:</td>
+                    <td>Email:</td>
                     <td><input type="text" th:field="*{email}" /></td>
                     <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email Error</td>
                 </tr>
                 <tr>
-                    <td>Пароль:</td>
+                    <td>Password:</td>
                     <td><input type="text" th:field="*{password}" /></td>
                     <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password Error</td>
                 </tr>

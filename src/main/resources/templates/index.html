@@ -8,10 +8,10 @@
 <body>
 <nav class="menu">
     <ul>
-        <li><a href="/profile">Мой профиль</a></li>
-        <li sec:authorize="anonymous"><a href="/login">Войти</a></li>
-        <li sec:authorize="authenticated"><a href="/logout">Выйти</a></li>
-        <li sec:authorize="anonymous"><a sec:authorize="anonymous" href="/registration">Регистрация</a></li>
+        <li><a href="/profile">My profile</a></li>
+        <li sec:authorize="anonymous"><a href="/login">Login</a></li>
+        <li sec:authorize="authenticated"><a href="/logout">Logout</a></li>
+        <li sec:authorize="anonymous"><a sec:authorize="anonymous" href="/registration">Registration</a></li>
     </ul>
 </nav>
 <div class="logo">

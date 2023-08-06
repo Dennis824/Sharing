@@ -48,7 +48,7 @@ public class TransmissionController {
             bindingResult.rejectValue("name", "error.object", e.getMessage());
             return "transmissions/new";
         }
-        model.addAttribute("success","Тип '"+object.getName()+"' успешно добавлен");
+        model.addAttribute("success","Type '"+object.getName()+"' added successfully");
         return "transmissions/new";
     }
 

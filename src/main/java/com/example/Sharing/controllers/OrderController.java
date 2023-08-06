@@ -113,7 +113,7 @@ public class OrderController {
         try {
             orderService.save(order);
         } catch (Exception e) {
-            model.addAttribute("error","Нет свободных авто на выбранный период");
+            model.addAttribute("error","No free cars on this pereod");
             return "orders/edit";
         }
         return "redirect:/profile/orders";
