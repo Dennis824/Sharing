@@ -16,7 +16,7 @@ function validateName() {
 }
 
 function validatePhone() {
-    var regex = new RegExp("/\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}/");
+    var regex = new RegExp("/\\+?[1-9][0-9]{7,14}/");
     var value=document.getElementById("phone").value;
     var help=document.getElementById("phone_help");
 
